@@ -1,14 +1,11 @@
-import express from "express";
+import Koa from "koa";
 
 export default () => {
-  const app = express()
-  const port = 3000
+  const app = new Koa();
 
-  app.get('/', (req, res) => {
-    res.send('Hello World!')
-  })
+  app.use(ctx => {
+    ctx.body = 'Hello Koa';
+  });
 
-  app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-  })
+  app.listen(3000);
 }
