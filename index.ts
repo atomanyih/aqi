@@ -1,7 +1,7 @@
-import startServer from "./startServer";
-import startMonitor from "./startMonitor";
+import startServer from "./src/startServer";
+import startMonitor from "./src/startMonitor";
 import Knex from 'knex';
-import knexConfig from '../knexfile';
+import knexConfig from './knexfile';
 import {Model} from "objection";
 
 
