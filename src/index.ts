@@ -1,5 +1,6 @@
 // https://github.com/triforcely/sds011-wrapper
 import SDS011Client, {SensorReading} from "sds011-client";
+import express from "express";
 
 console.log('starting!')
 
@@ -12,3 +13,14 @@ Promise
       console.log(JSON.stringify(r));
     });
   });
+
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
