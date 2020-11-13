@@ -1,6 +1,6 @@
 import {Model} from "objection";
 
-class Reading extends Model {
+export default class Reading extends Model {
   id!: number
   pm2_5!: number
   pm10!: number

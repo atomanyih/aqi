@@ -8,7 +8,7 @@ export async function up(knex: Knex): Promise<void> {
     table.float('pm2_5');
     table.float('pm10');
 
-    table.dateTime('readAt');
+    table.timestamp('readAt');
   })
 }
 
