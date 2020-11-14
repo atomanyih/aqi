@@ -2,8 +2,8 @@
 import SDS011Client, {SensorReading} from "sds011-client";
 import Reading from "../models/Reading";
 
-export default () => {
-  const sensor = new SDS011Client("/dev/cu.usbserial-1410");
+export default (portPath: string) => {
+  const sensor = new SDS011Client(portPath);
 
   Promise
     .all([sensor.setReportingMode(SDS011Client.ReportingMode.ACTIVE), sensor.setWorkingPeriod(1)])

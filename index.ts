@@ -4,11 +4,10 @@ import Knex from 'knex';
 import knexConfig from './knexfile';
 import {Model} from "objection";
 
-
 console.log('starting!')
 
 const knex = Knex(knexConfig.development)
 Model.knex(knex);
 
-startMonitor()
+startMonitor("/dev/cu.usbserial-1410")
 startServer();
