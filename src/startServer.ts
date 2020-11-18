@@ -1,11 +1,11 @@
 import Koa from "koa";
-import Reading from "../models/Reading";
+import ParticleReading from "../models/ParticleReading";
 
 export default () => {
   const app = new Koa();
 
   app.use(async ctx => {
-    ctx.body = await Reading.query();
+    ctx.body = await ParticleReading.query();
   });
 
   app.listen(3000);

@@ -2,7 +2,7 @@ import * as Knex from "knex";
 
 
 export async function up(knex: Knex): Promise<void> {
-  return knex.schema.createTable('readings', table => {
+  return knex.schema.createTable('particle_readings', table => {
     table.increments('id').primary();
 
     table.float('pm2_5');
@@ -15,6 +15,6 @@ export async function up(knex: Knex): Promise<void> {
 
 export async function down(knex: Knex): Promise<void> {
   return knex.schema
-    .dropTableIfExists('readings')
+    .dropTableIfExists('particle_readings')
 }
 

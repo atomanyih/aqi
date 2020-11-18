@@ -1,6 +1,6 @@
 // https://github.com/triforcely/sds011-wrapper
 import SDS011Client, {SensorReading} from "sds011-client";
-import Reading from "../models/Reading";
+import ParticleReading from "../models/ParticleReading";
 
 export default (portPath: string) => {
   const sensor = new SDS011Client(portPath);
@@ -10,7 +10,7 @@ export default (portPath: string) => {
     .then(() => {
       sensor.on('reading', async (r: SensorReading) => {
         console.log(JSON.stringify(r));
-        const reading = await Reading.query().insert({
+        const reading = await ParticleReading.query().insert({
           pm2_5: r.pm2p5,
           pm10: r.pm10,
           readAt: Date.now(),
