@@ -1,13 +1,15 @@
 import startServer from "./src/startServer";
-import startMonitor from "./src/startMonitor";
+import startParticleSensor from "./src/startParticleSensor";
 import Knex from 'knex';
 import knexConfig from './knexfile';
 import {Model} from "objection";
+import startTemperatureHumiditySensor from "./src/startTemperatureHumiditySensor";
 
 console.log('starting!')
 
 const knex = Knex(knexConfig.development)
 Model.knex(knex);
 
-startMonitor("/dev/cu.usbserial-1410")
+startParticleSensor("/dev/cu.usbserial-1410");
 startServer();
+startTemperatureHumiditySensor();
