@@ -5,11 +5,19 @@ import knexConfig from './knexfile';
 import {Model} from "objection";
 import startTemperatureHumiditySensor from "./src/startTemperatureHumiditySensor";
 
-console.log('starting!')
+const sds011PortPath = process.env.SDS011_PORT_PATH;
 
-const knex = Knex(knexConfig.development)
-Model.knex(knex);
+if(sds011PortPath) {
+  console.log('starting!')
 
-startParticleSensor("/dev/cu.usbserial-1410");
-startServer();
-startTemperatureHumiditySensor();
+  const knex = Knex(knexConfig.development)
+  Model.knex(knex);
+
+
+  startParticleSensor(sds011PortPath);
+  startTemperatureHumiditySensor();
+  startServer(3000);
+} else {
+  throw 'Port path not provided, app is not starting'
+}
+
