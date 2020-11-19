@@ -34,5 +34,5 @@ export default (intervalMs: number) => {
         error: err
       });
     }
-  }, 5000)
+  }, intervalMs)
 }

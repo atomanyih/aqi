@@ -18,7 +18,7 @@ if(sds011PortPath) {
 
 
   startParticleSensor(sds011PortPath);
-  startTemperatureHumiditySensor();
+  startTemperatureHumiditySensor(60*1000);
   startServer(3000);
 } else {
   throw 'Port path not provided, app is not starting'
