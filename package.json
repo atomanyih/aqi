@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build:live",
+    "start:production": "NODE_ENV=production tsc -p . && node dist/index.js",
     "build": "tsc -p .",
     "build:live": "nodemon --watch 'src/**/*.ts' --exec \"ts-node\" index.ts",
     "migrate": "knex migrate:latest",
@@ -19,7 +20,8 @@
     "objection": "^2.2.3",
     "sds011-client": "^1.0.1",
     "serialport": "^9.0.2",
-    "sqlite3": "^5.0.0"
+    "sqlite3": "^5.0.0",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@types/koa": "^2.11.6",

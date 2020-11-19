@@ -4,11 +4,14 @@ import Knex from 'knex';
 import knexConfig from './knexfile';
 import {Model} from "objection";
 import startTemperatureHumiditySensor from "./src/startTemperatureHumiditySensor";
+import logger from "./src/logger";
 
 const sds011PortPath = process.env.SDS011_PORT_PATH;
 
+logger.info('Checking env vars')
+
 if(sds011PortPath) {
-  console.log('starting!')
+  logger.info('Starting server')
 
   const knex = Knex(knexConfig.development)
   Model.knex(knex);

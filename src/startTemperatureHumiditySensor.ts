@@ -1,10 +1,11 @@
 import {promises as DHTSensor, SensorType} from 'node-dht-sensor';
 import TemperatureHumidityReading from "../models/TemperatureHumidityReading";
+import logger from "./logger";
 
 
-export default () => {
-  if(process.env.NODE_ENV !== 'production') {
-    console.log('initializing DHT sensor in fake mode')
+export default (intervalMs: number) => {
+  if (process.env.NODE_ENV !== 'production') {
+    logger.debug('initializing DHT sensor in fake mode')
     DHTSensor.initialize({
       test: {
         fake: {
@@ -25,9 +26,13 @@ export default () => {
         readAt: Date.now(),
       })
 
-      console.log(JSON.stringify(reading));
+      logger.debug('adding temperature/humidity reading', {
+        data: JSON.stringify(reading)
+      });
     } catch (err) {
-      console.error("Failed to read sensor data:", err);
+      logger.error("Failed to read DHT22 sensor data:", {
+        error: err
+      });
     }
   }, 5000)
 }
